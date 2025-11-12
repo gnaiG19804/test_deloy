@@ -1,0 +1,25 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* ✅ Hộp chứa tổng thể */
+  .ip-output-area {
+    @apply w-full min-h-[380px] rounded-2xl bg-white
+           border border-slate-200 shadow-md
+           p-5 text-left flex flex-col justify-start;
+    background: linear-gradient(to bottom right, #ffffff, #fafbff);
+  }
+
+  /* ✅ Textarea bên trong */
+  .ip-output-textarea {
+    @apply w-full h-[300px] resize-none outline-none border-none
+           bg-transparent font-sans text-[16px] leading-7 text-slate-800
+           overflow-y-auto;
+  }
+
+  /* ✅ Placeholder */
+  .ip-output-placeholder {
+    @apply text-gray-500 text-left font-normal italic;
+  }
+}

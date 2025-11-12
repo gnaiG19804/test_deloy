@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+.hp-root {
+  @apply flex h-full flex-col bg-gradient-to-br
+         from-slate-50 to-slate-100
+         dark:from-slate-900 dark:to-slate-950;
+}
+
+
+.hp-header {
+  @apply relative overflow-hidden border-b border-slate-200/50
+         bg-white/80 px-4 py-3 backdrop-blur-sm
+         dark:border-slate-700/50 dark:bg-slate-900/80;
+}
+.hp-header-bg {
+  @apply absolute inset-0 bg-gradient-to-r
+         from-blue-500/5 via-purple-500/5 to-pink-500/5
+         dark:from-blue-500/10 dark:via-purple-500/10 dark:to-pink-500/10;
+}
+.hp-header-row {
+  @apply relative flex items-center justify-between;
+}
+.hp-title-wrap {
+  @apply flex items-center gap-2.5;
+}
+.hp-title-icon {
+  @apply relative;
+}
+.hp-ping {
+  @apply absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-blue-500 opacity-75;
+  animation: hp-ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes hp-ping {
+  0% { transform: scale(1); opacity: .75; }
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+.hp-title-text {
+  @apply bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text
+         text-base font-bold text-transparent
+         dark:from-white dark:to-slate-300;
+}
+
+.hp-new-btn {
+  @apply relative overflow-hidden rounded-xl bg-gradient-to-r
+         from-blue-500 to-purple-500 p-2
+         shadow-lg shadow-blue-500/25 transition-all duration-300
+         hover:scale-105 hover:shadow-xl hover:shadow-blue-500/40
+         dark:shadow-blue-500/20 dark:hover:shadow-blue-500/30;
+}
+.hp-new-btn-hover {
+  @apply absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500
+         opacity-0 transition-opacity duration-300 group-hover:opacity-100;
+}
+
+
+.hp-body {
+  @apply flex-1 overflow-y-auto px-3 py-3;
+}
+
+
+.hp-empty {
+  @apply flex h-full flex-col items-center justify-center px-4 text-center;
+}
+.hp-empty-aura {
+  @apply relative mb-6;
+}
+.hp-empty-aura::before {
+  content: "";
+  @apply absolute inset-0 rounded-full;
+  background-image: linear-gradient(to right, rgb(96 165 250), rgb(168 85 247));
+  filter: blur(24px);
+  opacity: .2;
+  animation: hp-pulse 1.5s ease-in-out infinite;
+}
+@keyframes hp-pulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.3; }
+}
+.hp-empty-title {
+  @apply mb-2 text-base font-semibold text-slate-600 dark:text-slate-400;
+}
+.hp-empty-sub {
+  @apply text-sm text-slate-400 dark:text-slate-500;
+}
+
+
+.hp-list {
+  @apply space-y-2;
+}
+
+
+.hp-item {
+  animation: hp-slide-in .3s ease-out both;
+  @apply relative overflow-hidden rounded-xl p-0;
+}
+@keyframes hp-slide-in {
+  from { transform: translateY(4px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+.hp-item-outer {
+  @apply absolute inset-0 rounded-xl
+         bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500
+         opacity-0 transition-opacity duration-300
+         group-hover:opacity-100;
+}
+/* Inner card surface */
+.hp-item-inner {
+  /* inset-[2px] không @apply được → dùng padding mix: */
+  @apply relative rounded-[10px] bg-white dark:bg-slate-800/50;
+  /* Dùng pseudo container to simulate 2px inset */
+  margin: 2px;
+  height: calc(100% - 4px);
+}
+
+/* Content area */
+.hp-item-content {
+  @apply relative flex w-full items-start gap-3 rounded-xl bg-white p-4
+         text-left shadow-sm transition-all duration-300
+         hover:-translate-y-0.5 hover:shadow-xl
+         dark:bg-slate-800/50 dark:shadow-slate-900/20;
+}
+
+.hp-item-icon-wrap {
+  @apply flex-shrink-0 pt-0.5;
+}
+.hp-item-icon {
+  @apply flex h-9 w-9 items-center justify-center rounded-lg
+         bg-gradient-to-br from-slate-100 to-slate-200
+         transition-all duration-300
+         dark:from-slate-700 dark:to-slate-600;
+}
+.hp-item-icon--active {
+  @apply from-blue-500 to-purple-500 shadow-lg shadow-blue-500/30;
+}
+
+.hp-item-text {
+  @apply min-w-0 flex-1;
+}
+.hp-item-title {
+  @apply mb-1.5 line-clamp-2 text-sm font-semibold
+         text-slate-900 transition-colors duration-200
+         group-hover:text-blue-600
+         dark:text-white dark:group-hover:text-blue-400;
+}
+.hp-item-time {
+  @apply flex items-center gap-1.5;
+}
+.hp-item-time-text {
+  @apply text-xs font-medium text-slate-500 dark:text-slate-400;
+}
+
+
+.hp-item-arrow {
+  @apply flex-shrink-0 -translate-x-2 opacity-0 transition-all duration-300;
+}
+.hp-item-arrow--show {
+  @apply translate-x-0 opacity-100;
+}
+.hp-item-arrow-pill {
+  @apply rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-1.5;
+}
+
+.hp-footer {
+  @apply relative border-t border-slate-200/50 bg-white/80 px-4 py-3
+         backdrop-blur-sm dark:border-slate-700/50 dark:bg-slate-900/80;
+}
+.hp-footer-bg {
+  @apply absolute inset-0 bg-gradient-to-r
+         from-blue-500/5 via-purple-500/5 to-pink-500/5
+         dark:from-blue-500/10 dark:via-purple-500/10 dark:to-pink-500/10;
+}
+.hp-footer-row {
+  @apply relative flex items-center gap-2;
+}
+.hp-badge {
+  @apply flex h-6 w-6 items-center justify-center rounded-full
+         bg-gradient-to-br from-blue-500 to-purple-500
+         text-xs font-bold text-white;
+}
+.hp-footer-text {
+  @apply text-sm font-medium text-slate-600 dark:text-slate-400;
+}
+
+}

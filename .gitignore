@@ -1,0 +1,27 @@
+# ----------------------------
+# Node / React / Vite
+# ----------------------------
+node_modules/
+dist/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ----------------------------
+# Python / FastAPI
+# ----------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+*.egg-info/
+.venv/
+venv/
+backend/app/llm/models/*
+!backend/app/llm/models/.gitkeep
+backend/.hf_cache/
+.hf_cache/

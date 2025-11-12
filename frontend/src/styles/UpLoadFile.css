@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .ip-upload {
+    @apply inline-flex items-center gap-2 px-5 py-3
+           rounded-xl border-2 border-gray-200 bg-white
+           text-sm font-semibold text-gray-700 shadow-md
+           transition-all duration-300
+           hover:shadow-lg hover:scale-105 hover:-translate-y-0.5
+           active:scale-100 active:translate-y-0
+           mr-auto;
+  }
+  .ip-icon {
+    @apply w-4 h-4;
+  }
+}

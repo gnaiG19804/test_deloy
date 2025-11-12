@@ -1,0 +1,510 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  .login-page {
+    @apply min-h-screen relative overflow-hidden flex items-center justify-center p-4 bg-gradient-to-br from-indigo-950 via-purple-950 to-pink-950 text-white;
+  }
+
+  .animated-background {
+    @apply absolute inset-0;
+  }
+
+  .blob-container {
+    @apply absolute inset-0 opacity-40;
+  }
+
+  .blob {
+    @apply absolute rounded-full mix-blend-screen filter blur-3xl;
+    width: 32rem;
+    height: 32rem;
+    animation: blob 10s ease-in-out infinite;
+  }
+
+  .blob-1 {
+    @apply bg-gradient-to-br from-purple-500 to-pink-500;
+    top: -10%;
+    left: -10%;
+    animation-delay: 0s;
+  }
+
+  .blob-2 {
+    @apply bg-gradient-to-br from-blue-500 to-cyan-500;
+    top: -5%;
+    right: -10%;
+    animation-delay: 3s;
+  }
+
+  .blob-3 {
+    @apply bg-gradient-to-br from-pink-500 to-rose-500;
+    bottom: -15%;
+    left: 20%;
+    animation-delay: 6s;
+  }
+
+  @keyframes blob {
+    0%, 100% { 
+      transform: translate(0, 0) scale(1) rotate(0deg);
+      opacity: 0.7;
+    }
+    25% { 
+      transform: translate(50px, -80px) scale(1.2) rotate(90deg);
+      opacity: 0.9;
+    }
+    50% { 
+      transform: translate(-30px, 50px) scale(0.9) rotate(180deg);
+      opacity: 0.6;
+    }
+    75% { 
+      transform: translate(40px, -20px) scale(1.1) rotate(270deg);
+      opacity: 0.8;
+    }
+  }
+
+  .grid-pattern {
+    @apply absolute inset-0 opacity-20;
+    background-image: 
+      linear-gradient(rgba(255,255,255,.05) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(255,255,255,.05) 1.5px, transparent 1.5px);
+    background-size: 60px 60px;
+    animation: gridMove 20s linear infinite;
+  }
+
+  @keyframes gridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 60px 60px; }
+  }
+
+  .particles-container {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+  }
+
+  .particle {
+    position: absolute;
+    width: 0.3rem;
+    height: 0.3rem;
+    background: linear-gradient(135deg, #fff, #a78bfa);
+    border-radius: 9999px;
+    box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+    animation-name: float;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { 
+      transform: translateY(0) translateX(0) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+      transform: translateY(-20vh) translateX(10px) scale(1);
+    }
+    90% { 
+      opacity: 0.8;
+      transform: translateY(-90vh) translateX(-20px) scale(0.5);
+    }
+    100% { 
+      transform: translateY(-100vh) translateX(30px) scale(0);
+      opacity: 0;
+    }
+  }
+
+  .stars-container {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+  }
+
+  .floating-star {
+    @apply absolute text-yellow-300 opacity-60;
+    animation: starFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(253, 224, 71, 0.6));
+  }
+
+  @keyframes starFloat {
+    0%, 100% { 
+      transform: translateY(0) rotate(0deg) scale(1);
+      opacity: 0.4;
+    }
+    50% { 
+      transform: translateY(-20px) rotate(180deg) scale(1.3);
+      opacity: 0.8;
+    }
+  }
+
+  .lightning-container {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+  }
+
+  .floating-lightning {
+    @apply absolute text-cyan-400 opacity-0;
+    animation: lightningFlash 6s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(34, 211, 238, 0.8));
+  }
+
+  @keyframes lightningFlash {
+    0%, 90%, 100% { opacity: 0; transform: scale(0.8); }
+    92%, 96% { opacity: 0.9; transform: scale(1.2); }
+    94% { opacity: 0.3; transform: scale(1); }
+  }
+
+  /* Các class còn lại giữ nguyên từ code gốc */
+  .login-card-wrapper {
+    @apply relative w-full max-w-md;
+  }
+
+  .card-glow {
+    @apply absolute -inset-1 bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 rounded-3xl blur-2xl opacity-30 animate-pulse;
+  }
+
+  .login-card {
+    @apply relative bg-slate-900/80 backdrop-blur-2xl rounded-3xl p-8 shadow-2xl border border-white/10;
+  }
+
+  .login-header {
+    @apply text-center mb-8;
+  }
+
+  .icon-wrapper {
+    @apply inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl mb-4 shadow-lg shadow-purple-500/50;
+  }
+
+  .header-icon {
+    @apply w-8 h-8 text-white;
+  }
+
+  .login-title {
+    @apply text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent mb-2;
+  }
+
+  .login-subtitle {
+    @apply text-slate-400 text-sm;
+  }
+
+  .login-buttons {
+    @apply space-y-3;
+  }
+
+  .login-btn {
+    @apply relative w-full h-14 rounded-xl font-semibold transition-all duration-300 overflow-hidden;
+  }
+
+  .google-btn {
+    @apply bg-white hover:bg-gray-50 text-gray-900 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/20;
+  }
+
+  .github-btn {
+    @apply bg-gradient-to-r from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-700 text-white border border-white/10 hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-500/20;
+  }
+
+  .btn-shine {
+    @apply absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700;
+  }
+
+  .btn-content {
+    @apply relative flex items-center justify-center gap-3;
+  }
+
+  .btn-icon {
+    @apply w-5 h-5;
+  }
+
+  @media (max-width: 640px) {
+    .blob {
+      width: 20rem;
+      height: 20rem;
+      filter: blur(2rem);
+      opacity: 0.4;
+    }
+    .login-card {
+      @apply p-6;
+    }
+    .login-title {
+      @apply text-3xl;
+    }
+    .stars-container,
+    .lightning-container {
+      @apply hidden;
+    }
+  }
+  .login-card-wrapper {
+    @apply relative w-full max-w-md z-10;
+    animation: cardEntrance 0.8s ease-out;
+  }
+
+  @keyframes cardEntrance {
+    0% { 
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+    }
+    100% { 
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .card-glow {
+    @apply absolute -inset-2 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-3xl blur-3xl opacity-40;
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  .card-glow-secondary {
+    @apply absolute -inset-4 bg-gradient-to-l from-blue-500 via-purple-500 to-pink-500 rounded-3xl blur-3xl opacity-20;
+    animation: glowPulse 3s ease-in-out infinite reverse;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.05); }
+  }
+
+  .login-card {
+    @apply relative bg-slate-900/90 backdrop-blur-2xl rounded-3xl p-10 shadow-2xl border border-white/20 overflow-hidden;
+    background-image: radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+  }
+
+  .card-inner-glow {
+    @apply absolute inset-0 rounded-3xl opacity-30 pointer-events-none;
+    background: radial-gradient(circle at 50% 0%, rgba(167, 139, 250, 0.3), transparent 70%);
+  }
+
+  .login-header {
+    @apply text-center mb-10 relative;
+  }
+
+  .icon-wrapper {
+    @apply relative inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-500 via-pink-500 to-blue-500 rounded-2xl mb-6 shadow-2xl mx-auto;
+    animation: iconBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes iconBounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+  }
+
+  .icon-glow {
+    @apply absolute inset-0 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl blur-xl opacity-60;
+    animation: iconGlowPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes iconGlowPulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.2); }
+  }
+
+  .header-icon {
+    @apply w-10 h-10 text-white relative z-10;
+    animation: iconSpin 3s linear infinite;
+  }
+
+  @keyframes iconSpin {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(10deg); }
+  }
+
+  .login-title {
+    @apply text-5xl font-bold mb-3;
+    background: linear-gradient(135deg, #fff 0%, #a78bfa 50%, #ec4899 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .login-subtitle {
+    @apply text-slate-300 text-base font-medium;
+  }
+
+  .title-underline {
+    @apply w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 mx-auto mt-4 rounded-full;
+    animation: underlineExpand 2s ease-in-out infinite;
+  }
+
+  @keyframes underlineExpand {
+    0%, 100% { width: 6rem; opacity: 0.6; }
+    50% { width: 8rem; opacity: 1; }
+  }
+
+  /* Cập nhật media query */
+  @media (max-width: 640px) {
+    .blob {
+      width: 20rem;
+      height: 20rem;
+      filter: blur(2rem);
+      opacity: 0.4;
+    }
+    .login-card {
+      @apply p-6;
+    }
+    .login-title {
+      @apply text-3xl;
+    }
+    .icon-wrapper {
+      @apply w-16 h-16;
+    }
+    .header-icon {
+      @apply w-8 h-8;
+    }
+    .stars-container,
+    .lightning-container {
+      @apply hidden;
+    }
+  }
+  /* Thêm vào sau phần code của commit 2 */
+
+  .login-buttons {
+    @apply space-y-4;
+  }
+
+  .login-btn {
+    @apply relative w-full h-16 rounded-xl font-semibold transition-all duration-500 overflow-hidden;
+    transform: translateZ(0);
+  }
+
+  .google-btn {
+    @apply bg-white text-gray-900 border-2 border-transparent hover:border-blue-400;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .google-btn:hover {
+    @apply scale-105 shadow-2xl;
+    box-shadow: 0 10px 40px rgba(59, 130, 246, 0.4);
+  }
+
+  .github-btn {
+    @apply bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white border-2 border-white/20 hover:border-purple-400;
+    box-shadow: 0 4px 20px rgba(168, 85, 247, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .github-btn:hover {
+    @apply scale-105 shadow-2xl;
+    box-shadow: 0 10px 40px rgba(168, 85, 247, 0.4);
+  }
+
+  .btn-shine {
+    @apply absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/30 to-transparent;
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .login-btn:hover .btn-shine {
+    @apply translate-x-[100%];
+  }
+
+  .btn-glow {
+    @apply absolute inset-0 opacity-0 blur-xl transition-opacity duration-500;
+  }
+
+  .google-btn .btn-glow {
+    @apply bg-blue-400;
+  }
+
+  .github-btn .btn-glow {
+    @apply bg-purple-500;
+  }
+
+  .login-btn:hover .btn-glow {
+    @apply opacity-50;
+  }
+
+  .btn-content {
+    @apply relative flex items-center justify-center gap-3 z-10;
+  }
+
+  .btn-icon-wrapper {
+    @apply flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 transition-transform duration-300;
+  }
+
+  .login-btn:hover .btn-icon-wrapper {
+    @apply scale-110 rotate-12;
+  }
+
+  .btn-icon {
+    @apply w-5 h-5 transition-transform duration-300;
+  }
+
+  .login-btn:hover .btn-icon {
+    @apply scale-110;
+  }
+
+  .btn-particles {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500 pointer-events-none;
+  }
+
+  .login-btn:hover .btn-particles {
+    @apply opacity-100;
+  }
+
+  .btn-particle {
+    @apply absolute w-1 h-1 bg-white rounded-full;
+    animation: particleBurst 0.8s ease-out forwards;
+  }
+
+  .btn-particle:nth-child(1) { left: 20%; top: 50%; animation-delay: 0s; }
+  .btn-particle:nth-child(2) { left: 40%; top: 50%; animation-delay: 0.1s; }
+  .btn-particle:nth-child(3) { left: 60%; top: 50%; animation-delay: 0.2s; }
+  .btn-particle:nth-child(4) { left: 80%; top: 50%; animation-delay: 0.3s; }
+  .btn-particle:nth-child(5) { left: 30%; top: 50%; animation-delay: 0.15s; }
+  .btn-particle:nth-child(6) { left: 70%; top: 50%; animation-delay: 0.25s; }
+
+  @keyframes particleBurst {
+    0% { 
+      transform: translate(0, 0) scale(0);
+      opacity: 1;
+    }
+    100% { 
+      transform: translate(var(--x, 0), var(--y, -30px)) scale(1);
+      opacity: 0;
+    }
+  }
+
+  .login-footer {
+    @apply mt-8 text-center;
+  }
+
+  .footer-divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-4;
+  }
+
+  .footer-text {
+    @apply text-sm text-slate-400 font-medium;
+  }
+
+  /* Cập nhật media query cuối cùng */
+  @media (max-width: 640px) {
+    .blob {
+      width: 20rem;
+      height: 20rem;
+      filter: blur(2rem);
+      opacity: 0.4;
+    }
+    .login-card {
+      @apply p-6;
+    }
+    .login-title {
+      @apply text-3xl;
+    }
+    .icon-wrapper {
+      @apply w-16 h-16;
+    }
+    .header-icon {
+      @apply w-8 h-8;
+    }
+    .login-btn {
+      @apply h-14;
+    }
+    .stars-container,
+    .lightning-container {
+      @apply hidden;
+    }
+  }
+}

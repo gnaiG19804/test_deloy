@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .ip-page {
+    @apply min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100
+         pt-4 pb-10 px-4;
+  }
+
+  .ip-container { @apply max-w-7xl mx-auto; }
+
+  .ip-hero { @apply text-center mb-4; }
+  .ip-hero-row { @apply inline-flex items-center gap-3 mb-4 relative; }
+  .ip-hero-row::before {
+    content: '';
+    @apply absolute inset-0 blur-2xl opacity-30;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.5), rgba(168, 85, 247, 0.5));
+  }
+  .ip-hero-icon { 
+    @apply w-10 h-10 text-indigo-600 relative z-10;
+    filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.4));
+    animation: sparkleFloat 2s ease-in-out infinite;
+  }
+  .ip-title { 
+    @apply text-4xl font-extrabold relative z-10;
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease infinite;
+    filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.3));
+  }
+  .ip-subtitle { 
+    @apply text-gray-600 text-base font-medium;
+  }
+
+  .ip-panel { @apply flex flex-col lg:flex-row justify-between gap-6; }
+  .ip-wrap { @apply w-full lg:w-1/2 flex-shrink-0; }
+
+  .ip-card {
+    @apply relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border p-8
+           transition-all duration-500 hover:shadow-2xl hover:bg-white/90;
+    border-color: rgba(255,255,255,.5);
+    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.12), 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+  .ip-card::before {
+    content: '';
+    @apply absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500 pointer-events-none;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(168, 85, 247, 0.05));
+    pointer-events: none;
+    z-index: 0;
+  }
+  .ip-card:hover {
+    @apply bg-white shadow-2xl transform -translate-y-1;
+    box-shadow: 0 25px 70px rgba(99, 102, 241, 0.18), 0 0 1px rgba(0, 0, 0, 0.1);
+  }
+  .ip-card:hover::before {
+    @apply opacity-100;
+  }
+  .ip-card-output { @apply bg-gradient-to-br from-white/80 to-indigo-50/30; }
+  .ip-card > * {
+    position: relative;
+    z-index: 1; 
+  }
+  .ip-card::before {
+    z-index: 0;
+    pointer-events: none;
+  }
+  .ip-actions button,
+  .ip-actions label {
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+  }
+  .ip-label { @apply flex items-center gap-3 mb-5 text-lg font-bold text-gray-800 tracking-tight; }
+  .ip-label-dot {
+    @apply w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+    animation: ipSoftPulse 1.8s ease-in-out infinite;
+  }
+  .ip-label-dot-purple {
+    background-image: linear-gradient(to right, #a855f7, #ec4899);
+    box-shadow: 0 0 0 3px rgba(168,85,247,.15);
+  }
+
+  .ip-field { @apply mb-4; }
+
+  .ip-textarea {
+    @apply w-full h-[380px] resize-none rounded-2xl
+           border-2 border-gray-200 bg-gradient-to-br from-white to-gray-50/30
+           px-5 py-4 text-base leading-relaxed text-gray-900 placeholder:text-gray-400
+           shadow-inner outline-none transition-all duration-300 ease-out
+           focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 focus:bg-white;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+
+  .ip-textarea:hover,
+  .ip-textarea:focus {
+    cursor: text;
+    caret-color: #4f46e5;
+  }
+  .ip-output-area {
+    @apply w-full min-h-[380px] rounded-2xl
+           border-2 border-dashed border-indigo-200/60
+           bg-gradient-to-br from-indigo-50/30 to-purple-50/20
+           px-5 py-4 flex items-center justify-center;
+  }
+
+
+  .ip-help { @apply mt-3 flex items-center justify-between text-xs font-medium; }
+  .ip-hint { @apply text-gray-500; }
+  .ip-count { @apply tabular-nums text-gray-600 px-3 py-1 rounded-full bg-gray-100/80; }
+
+  .ip-actions { @apply flex justify-end gap-3 mt-1; }
+  .ip-icon { @apply w-4 h-4; }
+
+  .ip-primary {
+    @apply inline-flex items-center gap-2 rounded-xl
+           bg-gradient-to-r from-indigo-600 to-purple-600
+           px-6 py-3 text-sm font-bold text-white
+           shadow-lg transition-all duration-300
+           hover:shadow-xl hover:scale-105 hover:-translate-y-0.5
+           active:scale-100 active:translate-y-0
+           focus:ring-4 focus:ring-indigo-300/50
+           disabled:opacity-50 disabled:cursor-not-allowed;
+    background-size: 200% auto;
+  }
+  .ip-primary::before {
+  content: '';
+  @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+  }
+
+  .ip-primary::after {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3), transparent 70%);
+  }
+
+  .ip-primary:hover:not(:disabled) {
+    @apply shadow-2xl scale-105 -translate-y-1;
+    background-position: 100% center;
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4), 0 0 20px rgba(168, 85, 247, 0.3);
+  }
+
+  .ip-primary:hover:not(:disabled)::before {
+    @apply opacity-100;
+  }
+
+  .ip-primary:hover:not(:disabled)::after {
+    @apply opacity-100;
+    animation: shimmerButton 1.5s ease-in-out infinite;
+  }
+
+  .ip-primary:hover:not(:disabled) .ip-icon {
+    @apply rotate-12 scale-110;
+  }
+
+  .ip-primary:active:not(:disabled) {
+    @apply scale-100 translate-y-0;
+  }
+  .ip-download {
+    @apply inline-flex items-center gap-2 px-5 py-3
+           rounded-xl border-2 border-gray-200 bg-white
+           text-sm font-semibold text-gray-700 shadow-md
+           transition-all duration-300
+           hover:shadow-lg hover:scale-105 hover:-translate-y-0.5
+           active:scale-100 active:translate-y-0
+           mr-auto
+           mt-12;
+  }
+  .ip-copy {
+    @apply inline-flex items-center gap-2 px-5 py-3
+           rounded-xl border-2 border-gray-200 bg-white
+           text-sm font-semibold text-gray-700 shadow-md
+           transition-all duration-300
+           hover:shadow-lg hover:scale-105 hover:-translate-y-0.5
+           active:scale-100 active:translate-y-0
+           mr-auto
+           mt-12;
+  }
+  .ip-download::before,
+  .ip-copy::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(168, 85, 247, 0.05));
+  }
+
+  .ip-download:hover:not(:disabled),
+  .ip-copy:hover:not(:disabled) {
+    @apply shadow-xl scale-105 -translate-y-1 border-indigo-300/60 text-indigo-700;
+    box-shadow: 0 12px 32px rgba(99, 102, 241, 0.15);
+  }
+
+  .ip-download:hover:not(:disabled)::before,
+  .ip-copy:hover:not(:disabled)::before {
+    @apply opacity-100;
+  }
+
+  .ip-download:hover:not(:disabled) .ip-icon,
+  .ip-copy:hover:not(:disabled) .ip-icon {
+    @apply scale-110;
+    animation: bounceIcon 0.5s ease-in-out;
+  }
+
+  .ip-download:active:not(:disabled),
+  .ip-copy:active:not(:disabled) {
+    @apply scale-100 translate-y-0;
+  }
+  @keyframes fade-in-out {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    10%, 90% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+
+  .animate-fade-in-out {
+    animation: fade-in-out 2s ease forwards;
+  }
+  @keyframes sparkleFloat {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-4px) rotate(-5deg);
+    }
+    75% {
+      transform: translateY(4px) rotate(5deg);
+    }
+  }
+  @keyframes gradientShift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}
+
+@keyframes shimmerButton {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+@keyframes bounceIcon {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.2) translateY(-2px);
+  }
+}

@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  .hp-history-btn {
+    @apply fixed left-2 top-24 z-40 inline-flex items-center gap-2 
+          rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold shadow-lg
+          hover:bg-slate-50 active:scale-95;
+  }
+  .hp-history-btn::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(168, 85, 247, 0.08));
+  }
+
+  .hp-history-btn:hover {
+    @apply border-indigo-300/70 text-indigo-700;
+    box-shadow: 0 12px 32px rgba(99, 102, 241, 0.15), 0 0 0 1px rgba(99, 102, 241, 0.1);
+  }
+
+  .hp-history-btn:hover::before {
+    @apply opacity-100;
+  }
+
+  .hp-history-btn:hover .hp-history-icon {
+    @apply scale-110;
+    animation: bounceIcon 0.5s ease-in-out;
+  }
+  .hp-sidebar {
+    @apply fixed left-0 top-16 z-50 h-[calc(100vh-4rem)] w-56 md:w-72 
+           border-r border-slate-200 bg-white p-2 shadow-xl 
+           dark:border-slate-800 dark:bg-slate-900 
+           transition-transform duration-300 ease-in-out;
+  }
+
+  .hp-sidebar-header {
+    @apply mb-2 flex items-center justify-between px-1;
+  }
+
+  .hp-sidebar-title {
+    @apply text-sm font-semibold text-slate-600 dark:text-slate-300;
+  }
+
+  .hp-close-btn {
+    @apply rounded-lg p-1 text-slate-500 
+           hover:bg-slate-100 dark:hover:bg-slate-800;
+  }
+
+  .hp-sidebar-content {
+    @apply h-[calc(100%-1.75rem)] overflow-auto;
+  }
+
+  .hp-status-text {
+    @apply p-3 text-xs text-slate-500;
+  }
+
+  .hp-status-error {
+    @apply p-3 text-xs text-red-500;
+  }
+
+}
+@keyframes bounceIcon {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.2) translateY(-2px);
+  }
+}
