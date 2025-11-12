@@ -7,7 +7,7 @@ httpx>=0.27.0,<0.28
 pydantic-settings>=2.2.1,<2.3
 PyJWT>=2.9.0,<2.10
 itsdangerous
-
+python-jose[cryptography]==3.3.0
 # --- LLM / summarizer deps ---
 torch==2.5.0
 transformers==4.44.2
